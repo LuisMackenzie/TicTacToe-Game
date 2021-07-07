@@ -22,6 +22,7 @@ public class LoginActivity extends AppCompatActivity {
     private ActivityLoginBinding binding;
     private FirebaseAuth mAuth;
     private String email, pass;
+    private boolean tryLogin = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +70,7 @@ public class LoginActivity extends AppCompatActivity {
         mAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
+                tryLogin = true;
                 if (task.isSuccessful()) {
                     FirebaseUser user = mAuth.getCurrentUser();
                     updateUI(user);
@@ -95,8 +97,12 @@ public class LoginActivity extends AppCompatActivity {
             Intent in = new Intent(LoginActivity.this, FindPlayerActivity.class);
             startActivity(in);
         } else {
-            binding.etPass.setError("Email o contraseña incorrectos");
-            binding.etPass.requestFocus();
+            changeVisibility(true);
+            if (tryLogin) {
+                binding.etPass.setError("Email o contraseña incorrectos");
+                binding.etPass.requestFocus();
+            }
+
         }
     }
 
@@ -106,7 +112,8 @@ public class LoginActivity extends AppCompatActivity {
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
-            // reload();
+
+            updateUI(currentUser);
         }
     }
 
