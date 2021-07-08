@@ -15,7 +15,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.mackenzie.tictactoe.FindPlayerActivity;
 import com.mackenzie.tictactoe.databinding.ActivityRegistroBinding;
 import com.mackenzie.tictactoe.model.User;
 

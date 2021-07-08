@@ -12,12 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TicTacToe">
-        <activity android:name=".game.GameActivity2"></activity>
-        <activity
-            android:name=".game.GameActivity"
-            android:label="@string/title_activity_game"
-            android:theme="@style/Theme.TicTacToe.NoActionBar" />
-        <activity android:name=".FindPlayerActivity" />
+        <activity android:name=".ui.GameActivity2"></activity>
+        <activity android:name=".ui.FindPlayerActivity" />
         <activity android:name=".ui.RegistroActivity" />
         <activity android:name=".ui.LoginActivity">
             <intent-filter>
