@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -16,6 +17,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.mackenzie.tictactoe.FindPlayerActivity;
 import com.mackenzie.tictactoe.databinding.ActivityRegistroBinding;
+import com.mackenzie.tictactoe.model.User;
 
 public class RegistroActivity extends AppCompatActivity {
 
@@ -87,10 +89,22 @@ public class RegistroActivity extends AppCompatActivity {
     private void updateUI(FirebaseUser user) {
         if (user != null) {
             // almacenar la informacion del usuario en firestore
+            User newUser = new User(name, 0, 0);
+            db.collection("users")
+                    .document(user.getUid())
+                    .set(newUser)
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
 
-            // y navegar hacia la siguentye pantalla
-            Intent in = new Intent(RegistroActivity.this, FindPlayerActivity.class);
-            startActivity(in);
+
+                            // y navegar hacia la siguentye pantalla
+                            Intent in = new Intent(RegistroActivity.this, FindPlayerActivity.class);
+                            startActivity(in);
+                            finish();
+                        }
+                    });
+
         } else {
             binding.etPassReg.setError("Email o contraseña incorrectos");
             binding.etPassReg.requestFocus();

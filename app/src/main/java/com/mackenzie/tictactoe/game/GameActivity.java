@@ -8,10 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
 
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
 import com.mackenzie.tictactoe.databinding.ActivityGameBinding;
 import com.mackenzie.tictactoe.R;
@@ -24,15 +21,14 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         binding = ActivityGameBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.toolbar);
 
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_game);
+        /*NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_game);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);*/
 
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,10 +39,10 @@ public class GameActivity extends AppCompatActivity {
         });
     }
 
-    @Override
+    /*@Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_game);
         return NavigationUI.navigateUp(navController, appBarConfiguration)
                 || super.onSupportNavigateUp();
-    }
+    }*/
 }
