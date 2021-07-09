@@ -99,6 +99,7 @@ public class RegistroActivity extends AppCompatActivity {
 
                             // y navegar hacia la siguentye pantalla
                             Intent in = new Intent(RegistroActivity.this, FindPlayerActivity.class);
+                            in.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(in);
                             finish();
                         }

@@ -209,14 +209,19 @@ public class FindPlayerActivity extends AppCompatActivity {
     }
 
     private void changeVisibility(boolean showMenu) {
-        binding.progressBarJugadas.setVisibility(showMenu ? View.GONE : View.VISIBLE);
+        binding.layoutprogressBar.setVisibility(showMenu ? View.GONE : View.VISIBLE);
         binding.menuJuego.setVisibility(showMenu ? View.VISIBLE : View.GONE);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        changeVisibility(true);
+        if(jugadaId != "") {
+            changeVisibility(false);
+            esperarJugador();
+        } else {
+            changeVisibility(true);
+        }
     }
 
     @Override

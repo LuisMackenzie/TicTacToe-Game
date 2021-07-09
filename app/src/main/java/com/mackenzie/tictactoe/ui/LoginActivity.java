@@ -59,6 +59,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent in = new Intent(LoginActivity.this, RegistroActivity.class);
+                in.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(in);
                 // finish();
             }
@@ -94,6 +95,7 @@ public class LoginActivity extends AppCompatActivity {
 
             // y navegar hacia la siguentye pantalla
             Intent in = new Intent(LoginActivity.this, FindPlayerActivity.class);
+            in.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(in);
         } else {
             changeVisibility(true);
