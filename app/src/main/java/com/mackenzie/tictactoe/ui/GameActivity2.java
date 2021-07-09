@@ -66,7 +66,7 @@ public class GameActivity2 extends AppCompatActivity {
             }
         });
 
-        binding2.textViewPlayer1.setTextColor(getResources().getColor(R.color.purple_500));
+        // binding2.textViewPlayer1.setTextColor(getResources().getColor(R.color.purple_500));
 
         initViews();
         initGame();
@@ -85,20 +85,18 @@ public class GameActivity2 extends AppCompatActivity {
     }
 
     private void initViews() {
-        // tvPlayer1 = binding2.textViewPlayer1;
-        // tvPlayer2 = binding2.textViewPlayer2;
 
         casillas = new ArrayList<>();
 
-        casillas.add((ImageView) binding2.imageView0);
-        casillas.add((ImageView) binding2.imageView1);
-        casillas.add((ImageView) binding2.imageView2);
-        casillas.add((ImageView) binding2.imageView3);
-        casillas.add((ImageView) binding2.imageView4);
-        casillas.add((ImageView) binding2.imageView5);
-        casillas.add((ImageView) binding2.imageView6);
-        casillas.add((ImageView) binding2.imageView7);
-        casillas.add((ImageView) binding2.imageView8);
+        casillas.add(binding2.imageView0);
+        casillas.add(binding2.imageView1);
+        casillas.add(binding2.imageView2);
+        casillas.add(binding2.imageView3);
+        casillas.add(binding2.imageView4);
+        casillas.add(binding2.imageView5);
+        casillas.add(binding2.imageView6);
+        casillas.add(binding2.imageView7);
+        casillas.add(binding2.imageView8);
     }
 
     private void jugadaListener() {
