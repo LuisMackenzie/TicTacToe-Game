@@ -1,7 +1,6 @@
 package com.mackenzie.tictactoe.ui;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -26,6 +25,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.mackenzie.tictactoe.app.Constantes;
 import com.mackenzie.tictactoe.databinding.ActivityFindPlayerBinding;
 import com.mackenzie.tictactoe.model.Jugada;
+
+import javax.annotation.Nullable;
 
 public class FindPlayerActivity extends AppCompatActivity {
 
