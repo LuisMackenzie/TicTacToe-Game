@@ -40,8 +40,8 @@ public class GameActivity2 extends AppCompatActivity {
     private ActivityGame2Binding binding;
     private ContentGameBinding binding2;
     List<ImageView> casillas;
-    TextView tvPlayer1, tvPlayer2;
-    FirebaseAuth firebaseAuth;
+    // TextView tvPlayer1, tvPlayer2;
+    FirebaseAuth mAuth;
     FirebaseFirestore db;
     String uid, jugadaId = "", playerOneName = "", playerTwoName = "", ganadorId = "";
     Jugada jugada;
@@ -55,8 +55,8 @@ public class GameActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityGame2Binding.inflate(getLayoutInflater());
         binding2 = ContentGameBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-        setSupportActionBar(binding.toolbar);
+        setContentView(binding2.getRoot());
+        // setSupportActionBar(binding.toolbar);
 
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,14 +66,17 @@ public class GameActivity2 extends AppCompatActivity {
             }
         });
 
+        binding2.textViewPlayer1.setTextColor(getResources().getColor(R.color.purple_500));
+
         initViews();
         initGame();
+        // updatePlayersUI();
 
     }
 
     private void initGame() {
-        firebaseAuth = FirebaseAuth.getInstance();
-        firebaseUser = firebaseAuth.getCurrentUser();
+        mAuth = FirebaseAuth.getInstance();
+        firebaseUser = mAuth.getCurrentUser();
         db = FirebaseFirestore.getInstance();
         uid = firebaseUser.getUid();
 
@@ -82,20 +85,20 @@ public class GameActivity2 extends AppCompatActivity {
     }
 
     private void initViews() {
-        tvPlayer1 = findViewById(R.id.textViewPlayer1);
-        tvPlayer2 = findViewById(R.id.textViewPlayer2);
+        // tvPlayer1 = binding2.textViewPlayer1;
+        // tvPlayer2 = binding2.textViewPlayer2;
 
         casillas = new ArrayList<>();
 
-        casillas.add(binding2.imageView0);
-        casillas.add(binding2.imageView1);
-        casillas.add(binding2.imageView2);
-        casillas.add(binding2.imageView3);
-        casillas.add(binding2.imageView4);
-        casillas.add(binding2.imageView5);
-        casillas.add(binding2.imageView6);
-        casillas.add(binding2.imageView7);
-        casillas.add(binding2.imageView8);
+        casillas.add((ImageView) binding2.imageView0);
+        casillas.add((ImageView) binding2.imageView1);
+        casillas.add((ImageView) binding2.imageView2);
+        casillas.add((ImageView) binding2.imageView3);
+        casillas.add((ImageView) binding2.imageView4);
+        casillas.add((ImageView) binding2.imageView5);
+        casillas.add((ImageView) binding2.imageView6);
+        casillas.add((ImageView) binding2.imageView7);
+        casillas.add((ImageView) binding2.imageView8);
     }
 
     private void jugadaListener() {
@@ -130,17 +133,18 @@ public class GameActivity2 extends AppCompatActivity {
 
     private void updatePlayersUI() {
         if(jugada.isTurnoP1()) {
-            tvPlayer1.setTextColor(getResources().getColor(R.color.purple_500));
-            tvPlayer2.setTextColor(getResources().getColor(R.color.teal_700));
+            binding2.textViewPlayer1.setTextColor(getResources().getColor(R.color.purple_500));
+            binding2.textViewPlayer2.setTextColor(getResources().getColor(R.color.teal_700));
         } else {
-            tvPlayer1.setTextColor(getResources().getColor(R.color.teal_700));
-            tvPlayer2.setTextColor(getResources().getColor(R.color.teal_200));
+            binding2.textViewPlayer1.setTextColor(getResources().getColor(R.color.teal_700));
+            binding2.textViewPlayer2.setTextColor(getResources().getColor(R.color.teal_200));
         }
 
         if(!jugada.getGanadorId().isEmpty()) {
             ganadorId = jugada.getGanadorId();
             mostrarDialogoGameOver();
         }
+
     }
 
     private void updateUI() {
@@ -156,6 +160,13 @@ public class GameActivity2 extends AppCompatActivity {
                 ivCasillaActual.setImageResource(R.drawable.ic_player_two);
             }
         }
+       /* if(jugada.isTurnoP1()) {
+            binding2.textViewPlayer1.setTextColor(getResources().getColor(R.color.teal_200));
+            binding2.textViewPlayer2.setTextColor(getResources().getColor(R.color.teal_700));
+        } else {
+            binding2.textViewPlayer1.setTextColor(getResources().getColor(R.color.purple_700));
+            binding2.textViewPlayer2.setTextColor(getResources().getColor(R.color.teal_700));
+        }*/
     }
 
     private void getPlayerNames() {
@@ -168,7 +179,7 @@ public class GameActivity2 extends AppCompatActivity {
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         userPlayer1 = documentSnapshot.toObject(User.class);
                         playerOneName = documentSnapshot.get("name").toString();
-                        tvPlayer1.setText(playerOneName);
+                        binding2.textViewPlayer1.setText(playerOneName);
 
                         if(jugada.getJugador1().equals(uid)) {
                             nombreJugador = playerOneName;
@@ -185,7 +196,7 @@ public class GameActivity2 extends AppCompatActivity {
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         userPlayer2 = documentSnapshot.toObject(User.class);
                         playerTwoName = documentSnapshot.get("name").toString();
-                        tvPlayer2.setText(playerTwoName);
+                        binding2.textViewPlayer2.setText(playerTwoName);
 
                         if(jugada.getJugador2().equals(uid)) {
                             nombreJugador = playerTwoName;
@@ -233,7 +244,6 @@ public class GameActivity2 extends AppCompatActivity {
             } else {
                 cambioTurno();
             }
-
             // Actualizar en Firestore los datos de la jugada
             db.collection("jugadas")
                     .document(jugadaId)
@@ -241,6 +251,7 @@ public class GameActivity2 extends AppCompatActivity {
                     .addOnSuccessListener(GameActivity2.this, new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
+                            // Aqui faltan cosas
 
                         }
                     }).addOnFailureListener(GameActivity2.this, new OnFailureListener() {

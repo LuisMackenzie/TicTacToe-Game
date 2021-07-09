@@ -53,7 +53,7 @@ public class FindPlayerActivity extends AppCompatActivity {
         binding.animationView.playAnimation();
 
         db.collection("jugadas")
-                .whereEqualTo("jugadorDosId", "")
+                .whereEqualTo("jugador2", "")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -65,7 +65,7 @@ public class FindPlayerActivity extends AppCompatActivity {
                             boolean encontrado = false;
 
                             for(DocumentSnapshot docJugada : task.getResult().getDocuments()) {
-                                if(!docJugada.get("jugadorUnoId").equals(uid)) {
+                                if(!docJugada.get("jugador1").equals(uid)) {
                                     encontrado = true;
 
                                     jugadaId = docJugada.getId();
@@ -145,7 +145,7 @@ public class FindPlayerActivity extends AppCompatActivity {
                 .addSnapshotListener(new EventListener<DocumentSnapshot>() {
                     @Override
                     public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                        if(!documentSnapshot.get("jugadorDosId").equals("")) {
+                         if(!documentSnapshot.get("jugador2").equals("")) {
                             binding.textViewLoading.setText("¡Ya ha llegado un jugador! Comienza la partida");
                             binding.animationView.setRepeatCount(0);
                             binding.animationView.setAnimation("checked_animation.json");
