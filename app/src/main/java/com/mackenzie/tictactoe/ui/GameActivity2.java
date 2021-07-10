@@ -43,8 +43,8 @@ public class GameActivity2 extends AppCompatActivity {
     // TextView tvPlayer1, tvPlayer2;
     FirebaseAuth mAuth;
     FirebaseFirestore db;
-    String uid, jugadaId = "", playerOneName = "", playerTwoName = "", ganadorId = "";
-    Jugada jugada;
+    private String uid, jugadaId = "", playerOneName = "", playerTwoName = "", ganadorId = "";
+    private Jugada jugada;
     ListenerRegistration listenerJugada = null;
     FirebaseUser firebaseUser;
     String nombreJugador;
@@ -158,13 +158,6 @@ public class GameActivity2 extends AppCompatActivity {
                 ivCasillaActual.setImageResource(R.drawable.ic_player_two);
             }
         }
-       /* if(jugada.isTurnoP1()) {
-            binding2.textViewPlayer1.setTextColor(getResources().getColor(R.color.teal_200));
-            binding2.textViewPlayer2.setTextColor(getResources().getColor(R.color.teal_700));
-        } else {
-            binding2.textViewPlayer1.setTextColor(getResources().getColor(R.color.purple_700));
-            binding2.textViewPlayer2.setTextColor(getResources().getColor(R.color.teal_700));
-        }*/
     }
 
     private void getPlayerNames() {
@@ -182,12 +175,13 @@ public class GameActivity2 extends AppCompatActivity {
                         if(jugada.getJugador1().equals(uid)) {
                             nombreJugador = playerOneName;
                         }
+                        Log.e("TAG NAME PLAYER 1", "name 1 " + playerOneName);
                     }
                 });
 
         // Obtener el nombre del player 2
         db.collection("users")
-                .document(jugada.getJugador1())
+                .document(jugada.getJugador2())
                 .get()
                 .addOnSuccessListener(GameActivity2.this, new OnSuccessListener<DocumentSnapshot>() {
                     @Override
@@ -195,7 +189,8 @@ public class GameActivity2 extends AppCompatActivity {
                         userPlayer2 = documentSnapshot.toObject(User.class);
                         playerTwoName = documentSnapshot.get("name").toString();
                         binding2.textViewPlayer2.setText(playerTwoName);
-
+                        // Toast.makeText(GameActivity2.this, "Player 2 name" + playerTwoName, Toast.LENGTH_SHORT).show();
+                        // Log.e("TAG NAME PLAYER 2", "name 2 " + playerTwoName);
                         if(jugada.getJugador2().equals(uid)) {
                             nombreJugador = playerTwoName;
                         }

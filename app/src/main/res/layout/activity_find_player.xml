@@ -99,6 +99,14 @@
                 android:drawableLeft="@drawable/ic_rank"
                 android:padding="16dp"
                 android:text="Ver Ranking" />
+
+            <TextView
+                android:id="@+id/tv_playername"
+                android:layout_width="match_parent"
+                android:text="Player name"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="30dp" />
         </LinearLayout>
     </ScrollView>
 

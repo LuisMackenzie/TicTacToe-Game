@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -25,6 +26,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.mackenzie.tictactoe.app.Constantes;
 import com.mackenzie.tictactoe.databinding.ActivityFindPlayerBinding;
 import com.mackenzie.tictactoe.model.Jugada;
+import com.mackenzie.tictactoe.model.User;
 
 import javax.annotation.Nullable;
 
@@ -34,7 +36,9 @@ public class FindPlayerActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
     private FirebaseUser user;
-    private String uid, jugadaId = "";
+    private Jugada jugada;
+    private User userPlayer1;
+    private String uid, jugadaId = "",playerOneName = "";
     private ListenerRegistration listenerRegistration = null;
 
     @Override
@@ -45,7 +49,29 @@ public class FindPlayerActivity extends AppCompatActivity {
         initProgressBar();
         firebaseInit();
         events();
+        getPlayerNames();
 
+    }
+
+    private void getPlayerNames() {
+
+        // Obtener el nombre del player 1
+        db.collection("users")
+                .document(uid)
+                .get()
+                .addOnSuccessListener(FindPlayerActivity.this, new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        userPlayer1 = documentSnapshot.toObject(User.class);
+                        playerOneName = documentSnapshot.get("name").toString();
+                        binding.tvPlayername.setText(playerOneName);
+
+                        /*if(jugada.getJugador1().equals(uid)) {
+                            nombreJugador = playerOneName;
+                        }*/
+                        Log.e("TAG NAME PLAYER 1", "name 1 " + playerOneName);
+                    }
+                });
     }
 
     private void buscarJugadaLibre() {
@@ -182,6 +208,9 @@ public class FindPlayerActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         user = mAuth.getCurrentUser();
         uid = mAuth.getUid();
+        // TODO Arelglar esto
+        // user.getDisplayName()
+        binding.tvPlayername.setText("Pruebas");
     }
 
     private void events() {
