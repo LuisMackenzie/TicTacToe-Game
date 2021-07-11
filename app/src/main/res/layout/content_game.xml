@@ -294,8 +294,8 @@
 
     <ImageView
         android:id="@+id/iv_avatar_p1"
-        android:layout_width="80dp"
-        android:layout_height="50dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="@+id/textViewPlayer1"
         app:layout_constraintStart_toStartOf="@+id/textViewPlayer1"
@@ -304,8 +304,8 @@
 
     <ImageView
         android:id="@+id/iv_avatar_p2"
-        android:layout_width="80dp"
-        android:layout_height="50dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="@+id/textViewPlayer2"
         app:layout_constraintStart_toStartOf="@+id/textViewPlayer2"
