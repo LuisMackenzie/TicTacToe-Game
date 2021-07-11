@@ -196,7 +196,7 @@ public class GameActivity2 extends AppCompatActivity {
                         userPlayer1 = documentSnapshot.toObject(User.class);
                         playerOneName = documentSnapshot.get("name").toString();
                         binding2.textViewPlayer1.setText(playerOneName);
-
+                        binding2.ivAvatarP1.setImageResource(R.drawable.ic_player_one);
                         if(jugada.getJugador1().equals(uid)) {
                             nombreJugador = playerOneName;
                         }
@@ -214,6 +214,7 @@ public class GameActivity2 extends AppCompatActivity {
                         userPlayer2 = documentSnapshot.toObject(User.class);
                         playerTwoName = documentSnapshot.get("name").toString();
                         binding2.textViewPlayer2.setText(playerTwoName);
+                        binding2.ivAvatarP2.setImageResource(R.drawable.ic_player_two);
                         // Toast.makeText(GameActivity2.this, "Player 2 name" + playerTwoName, Toast.LENGTH_SHORT).show();
                         // Log.e("TAG NAME PLAYER 2", "name 2 " + playerTwoName);
                         if(jugada.getJugador2().equals(uid)) {

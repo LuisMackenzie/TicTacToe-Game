@@ -165,43 +165,6 @@
         app:lottie_autoPlay="false"
         app:lottie_loop="false" />
 
-    <TextView
-        android:id="@+id/textViewPlayer1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Player 1"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageViewLogo"
-        app:layout_constraintEnd_toStartOf="@+id/imageViewLogo"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageViewLogo" />
-
-    <ImageView
-        android:id="@+id/imageViewLogo"
-        android:layout_width="80dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/textViewPlayer2"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textViewPlayer1"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_tic_tac_toe" />
-
-    <TextView
-        android:id="@+id/textViewPlayer2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Player 2"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageViewLogo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imageViewLogo"
-        app:layout_constraintTop_toTopOf="@+id/imageViewLogo" />
-
     <ImageView
         android:id="@+id/imageView0"
         android:layout_width="100dp"
@@ -289,7 +252,64 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView7"
         app:lottie_autoPlay="true"
-        app:lottie_fileName="green_ckeck.json"
+        app:lottie_fileName="game_loading.json"
         app:lottie_loop="false" />
+
+    <TextView
+        android:id="@+id/textViewPlayer1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Player 1"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewLogo"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewLogo"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageViewLogo" />
+
+    <ImageView
+        android:id="@+id/imageViewLogo"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/textViewPlayer2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textViewPlayer1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_tic_tac_toe" />
+
+    <TextView
+        android:id="@+id/textViewPlayer2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Player 2"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewLogo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imageViewLogo"
+        app:layout_constraintTop_toTopOf="@+id/imageViewLogo" />
+
+    <ImageView
+        android:id="@+id/iv_avatar_p1"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewPlayer1"
+        app:layout_constraintStart_toStartOf="@+id/textViewPlayer1"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPlayer1"
+        app:srcCompat="@drawable/ic_tic_tac_toe" />
+
+    <ImageView
+        android:id="@+id/iv_avatar_p2"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewPlayer2"
+        app:layout_constraintStart_toStartOf="@+id/textViewPlayer2"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPlayer2"
+        app:srcCompat="@drawable/ic_tic_tac_toe" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
