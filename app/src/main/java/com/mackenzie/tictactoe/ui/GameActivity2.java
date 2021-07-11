@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.airbnb.lottie.Lottie;
 import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -39,16 +40,17 @@ public class GameActivity2 extends AppCompatActivity {
 
     private ActivityGame2Binding binding;
     private ContentGameBinding binding2;
-    List<ImageView> casillas;
+    private List<ImageView> casillas;
+    private List<LottieAnimationView> animCasillas;
     // TextView tvPlayer1, tvPlayer2;
-    FirebaseAuth mAuth;
-    FirebaseFirestore db;
+    private FirebaseAuth mAuth;
+    private FirebaseFirestore db;
     private String uid, jugadaId = "", playerOneName = "", playerTwoName = "", ganadorId = "";
     private Jugada jugada;
-    ListenerRegistration listenerJugada = null;
-    FirebaseUser firebaseUser;
-    String nombreJugador;
-    User userPlayer1, userPlayer2;
+    private ListenerRegistration listenerJugada = null;
+    private FirebaseUser firebaseUser;
+    private String nombreJugador;
+    private User userPlayer1, userPlayer2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +89,18 @@ public class GameActivity2 extends AppCompatActivity {
     private void initViews() {
 
         casillas = new ArrayList<>();
+        animCasillas = new ArrayList<>();
+
+        animCasillas.add(binding2.ivLottie00);
+        animCasillas.add(binding2.ivLottie01);
+        animCasillas.add(binding2.ivLottie02);
+        animCasillas.add(binding2.ivLottie03);
+        animCasillas.add(binding2.ivLottie04);
+        animCasillas.add(binding2.ivLottie05);
+        animCasillas.add(binding2.ivLottie06);
+        animCasillas.add(binding2.ivLottie07);
+        animCasillas.add(binding2.ivLottie08);
+
 
         casillas.add(binding2.imageView0);
         casillas.add(binding2.imageView1);
@@ -149,13 +163,20 @@ public class GameActivity2 extends AppCompatActivity {
         for(int i=0; i<9; i++) {
             int casilla = jugada.getCeldas().get(i);
             ImageView ivCasillaActual = casillas.get(i);
+            LottieAnimationView lavCasillaActual = animCasillas.get(i);
 
             if(casilla == 0) {
                 ivCasillaActual.setImageResource(R.drawable.ic_empty_square);
             } else if(casilla == 1) {
-                ivCasillaActual.setImageResource(R.drawable.ic_player_one);
+                // lavCasillaActual.setRepeatCount(0);
+                lavCasillaActual.setAnimation("green_check.json");
+                //lavCasillaActual.playAnimation();
+                // ivCasillaActual.setImageResource(R.drawable.ic_player_one);
             } else {
-                ivCasillaActual.setImageResource(R.drawable.ic_player_two);
+                // lavCasillaActual.setRepeatCount(0);
+                lavCasillaActual.setAnimation("red_cross.json");
+                // lavCasillaActual.playAnimation();
+                // ivCasillaActual.setImageResource(R.drawable.ic_player_two);
             }
         }
     }
@@ -221,10 +242,16 @@ public class GameActivity2 extends AppCompatActivity {
             Toast.makeText(this, "Seleccione una casilla libre", Toast.LENGTH_SHORT).show();
         } else {
             if (jugada.isTurnoP1()) {
-                casillas.get(posicionCasilla).setImageResource(R.drawable.ic_player_one);
+                animCasillas.get(posicionCasilla).setRepeatCount(0);
+                animCasillas.get(posicionCasilla).setAnimation("green_check.json");
+                animCasillas.get(posicionCasilla).playAnimation();
+                // casillas.get(posicionCasilla).setImageResource(R.drawable.ic_player_one);
                 jugada.getCeldas().set(posicionCasilla, 1);
             } else {
-                casillas.get(posicionCasilla).setImageResource(R.drawable.ic_player_two);
+                animCasillas.get(posicionCasilla).setRepeatCount(0);
+                animCasillas.get(posicionCasilla).setAnimation("red_cross.json");
+                animCasillas.get(posicionCasilla).playAnimation();
+                // casillas.get(posicionCasilla).setImageResource(R.drawable.ic_player_two);
                 jugada.getCeldas().set(posicionCasilla, 2);
             }
 

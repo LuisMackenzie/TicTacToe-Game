@@ -217,6 +217,13 @@ public class FindPlayerActivity extends AppCompatActivity {
         binding.buttonJugar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(FindPlayerActivity.this, "Coming Soon...", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        binding.buttonJugarOnline.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 changeVisibility(false);
                 buscarJugadaLibre();
             }

@@ -87,6 +87,18 @@
                 android:layout_marginTop="32dp"
                 android:backgroundTint="@color/purple_500"
                 android:drawableLeft="@drawable/ic_console"
+                android:drawableRight="@drawable/ic_artificial_intelligence"
+                android:padding="16dp"
+                android:text="Jugar" />
+
+            <Button
+                android:id="@+id/buttonJugarOnline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@color/purple_500"
+                android:drawableLeft="@drawable/ic_console"
+                android:drawableRight="@drawable/ic_console"
                 android:padding="16dp"
                 android:text="Jugar online" />
 
@@ -94,7 +106,7 @@
                 android:id="@+id/buttonRanking"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="32dp"
                 android:backgroundTint="@color/teal_200"
                 android:drawableLeft="@drawable/ic_rank"
                 android:padding="16dp"

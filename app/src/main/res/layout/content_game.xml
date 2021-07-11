@@ -21,6 +21,20 @@
         app:layout_constraintTop_toTopOf="@+id/imageView7"
         app:srcCompat="@drawable/ic_empty_square" />
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/iv_lottie08"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:tag="8"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imageView7"
+        app:layout_constraintTop_toTopOf="@+id/imageView7"
+        app:lottie_fileName="game_loading.json"
+        app:lottie_loop="false"
+        app:lottie_autoPlay="true" />
+
     <ImageView
         android:id="@+id/imageView7"
         android:layout_width="100dp"
@@ -36,8 +50,33 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView4"
         app:srcCompat="@drawable/ic_empty_square" />
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/iv_lottie07"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="8dp"
+        android:tag="7"
+        app:layout_constraintEnd_toStartOf="@+id/imageView8"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imageView6"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:lottie_loop="false"
+        app:lottie_autoPlay="false" />
+
     <ImageView
         android:id="@+id/imageView6"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+        app:layout_constraintEnd_toStartOf="@+id/imageView7"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView7"
+        app:srcCompat="@drawable/ic_empty_square" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/iv_lottie06"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:onClick="casillaSeleccionada"
@@ -47,10 +86,23 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView7"
-        app:srcCompat="@drawable/ic_empty_square" />
+        app:lottie_loop="false"
+        app:lottie_autoPlay="false" />
 
     <ImageView
         android:id="@+id/imageView2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imageView1"
+        app:layout_constraintTop_toTopOf="@+id/imageView1"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_empty_square" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/iv_lottie02"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:onClick="casillaSeleccionada"
@@ -60,16 +112,14 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/imageView1"
         app:layout_constraintTop_toTopOf="@+id/imageView1"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_empty_square" />
+        app:lottie_loop="false"
+        app:lottie_autoPlay="false" />
 
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="24dp"
-        android:onClick="casillaSeleccionada"
-        android:tag="4"
         app:layout_constraintBottom_toTopOf="@+id/imageView7"
         app:layout_constraintEnd_toStartOf="@+id/imageView5"
         app:layout_constraintHorizontal_bias="0.5"
@@ -77,8 +127,34 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView1"
         app:srcCompat="@drawable/ic_empty_square" />
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/iv_lottie04"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:onClick="casillaSeleccionada"
+        android:tag="4"
+        app:layout_constraintBottom_toTopOf="@+id/imageView7"
+        app:layout_constraintEnd_toStartOf="@+id/imageView5"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/imageView1"
+        app:lottie_loop="false"
+        app:lottie_autoPlay="false" />
+
     <ImageView
         android:id="@+id/imageView3"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        app:layout_constraintEnd_toStartOf="@+id/imageView4"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView4"
+        app:srcCompat="@drawable/ic_empty_square" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/iv_lottie03"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:onClick="casillaSeleccionada"
@@ -89,7 +165,8 @@
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView4"
-        app:srcCompat="@drawable/ic_empty_square" />
+        app:lottie_loop="false"
+        app:lottie_autoPlay="false" />
 
     <TextView
         android:id="@+id/textViewPlayer1"
@@ -132,8 +209,6 @@
         android:id="@+id/imageView0"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:onClick="casillaSeleccionada"
-        android:tag="0"
         app:layout_constraintEnd_toStartOf="@+id/imageView1"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="spread"
@@ -141,12 +216,24 @@
         app:layout_constraintTop_toTopOf="@+id/imageView1"
         app:srcCompat="@drawable/ic_empty_square" />
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/iv_lottie00"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:onClick="casillaSeleccionada"
+        android:tag="0"
+        app:layout_constraintEnd_toStartOf="@+id/imageView1"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView1"
+        app:lottie_loop="false"
+        app:lottie_autoPlay="false" />
+
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:onClick="casillaSeleccionada"
-        android:tag="1"
         app:layout_constraintBottom_toTopOf="@+id/imageView4"
         app:layout_constraintEnd_toStartOf="@+id/imageView2"
         app:layout_constraintHorizontal_bias="0.5"
@@ -155,8 +242,34 @@
         app:layout_constraintVertical_chainStyle="packed"
         app:srcCompat="@drawable/ic_empty_square" />
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/iv_lottie01"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="24dp"
+        android:onClick="casillaSeleccionada"
+        android:tag="1"
+        app:layout_constraintBottom_toTopOf="@+id/imageView4"
+        app:layout_constraintEnd_toStartOf="@+id/imageView2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imageView0"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:lottie_autoPlay="false"
+        app:lottie_loop="false" />
+
     <ImageView
         android:id="@+id/imageView5"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintTop_toTopOf="@+id/imageView4"
+        app:srcCompat="@drawable/ic_empty_square" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/iv_lottie05"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:onClick="casillaSeleccionada"
@@ -166,5 +279,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/imageView4"
         app:layout_constraintTop_toTopOf="@+id/imageView4"
-        app:srcCompat="@drawable/ic_empty_square" />
+        app:lottie_loop="false"
+        app:lottie_autoPlay="false" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
