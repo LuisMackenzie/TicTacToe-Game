@@ -168,15 +168,19 @@ public class GameActivity2 extends AppCompatActivity {
             if(casilla == 0) {
                 ivCasillaActual.setImageResource(R.drawable.ic_empty_square);
             } else if(casilla == 1) {
-                // lavCasillaActual.setRepeatCount(1);
-                lavCasillaActual.setAnimation("green_check.json");
+                lavCasillaActual.setRepeatCount(0);
+                lavCasillaActual.setAnimation("green_ckeck.json");
+                // binding2.ivLottie08Check.setVisibility(View.VISIBLE);
+                // lavCasillaActual.setVisibility(View.VISIBLE);
                 lavCasillaActual.playAnimation();
-                // ivCasillaActual.setImageResource(R.drawable.ic_player_one);
+                ivCasillaActual.setImageResource(R.drawable.ic_player_one);
             } else {
-                // lavCasillaActual.setRepeatCount(1);
+                // binding2.ivLottie08Cross.setVisibility(View.VISIBLE);
+                lavCasillaActual.setRepeatCount(0);
                 lavCasillaActual.setAnimation("red_cross.json");
+                // lavCasillaActual.setVisibility(View.VISIBLE);
                 lavCasillaActual.playAnimation();
-                // ivCasillaActual.setImageResource(R.drawable.ic_player_two);
+                ivCasillaActual.setImageResource(R.drawable.ic_player_two);
             }
         }
     }
@@ -242,16 +246,18 @@ public class GameActivity2 extends AppCompatActivity {
             Toast.makeText(this, "Seleccione una casilla libre", Toast.LENGTH_SHORT).show();
         } else {
             if (jugada.isTurnoP1()) {
-                // animCasillas.get(posicionCasilla).setRepeatCount(1);
-                animCasillas.get(posicionCasilla).setAnimation("green_check.json");
-                //animCasillas.get(posicionCasilla).playAnimation();
-                // casillas.get(posicionCasilla).setImageResource(R.drawable.ic_player_one);
+                animCasillas.get(posicionCasilla).setRepeatCount(0);
+                animCasillas.get(posicionCasilla).setAnimation("green_ckeck.json");
+                // animCasillas.get(posicionCasilla).setVisibility(View.VISIBLE);
+                animCasillas.get(posicionCasilla).playAnimation();
+                casillas.get(posicionCasilla).setImageResource(R.drawable.ic_player_one);
                 jugada.getCeldas().set(posicionCasilla, 1);
             } else {
-                // animCasillas.get(posicionCasilla).setRepeatCount(1);
+                animCasillas.get(posicionCasilla).setRepeatCount(0);
                 animCasillas.get(posicionCasilla).setAnimation("red_cross.json");
-                // animCasillas.get(posicionCasilla).playAnimation();
-                // casillas.get(posicionCasilla).setImageResource(R.drawable.ic_player_two);
+                // animCasillas.get(posicionCasilla).setVisibility(View.VISIBLE);
+                animCasillas.get(posicionCasilla).playAnimation();
+                casillas.get(posicionCasilla).setImageResource(R.drawable.ic_player_two);
                 jugada.getCeldas().set(posicionCasilla, 2);
             }
 

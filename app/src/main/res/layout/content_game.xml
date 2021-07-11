@@ -289,7 +289,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView7"
         app:lottie_autoPlay="true"
-        app:lottie_fileName="game_loading.json"
+        app:lottie_fileName="green_ckeck.json"
         app:lottie_loop="false" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
