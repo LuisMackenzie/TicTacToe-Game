@@ -54,6 +54,28 @@ public class FindPlayerActivity extends AppCompatActivity {
 
     }
 
+     private void showDialogDificult() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Escoge una Dificultad");
+        builder.setMessage("Seleccione la dificultad de la CPU");
+        builder.setPositiveButton("Normal", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Constantes.LEVEL= "normal";
+                // issAction();
+            }
+        });
+        builder.setNegativeButton("Dificil", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Constantes.LEVEL = "hard";
+                // issAction();
+            }
+        });
+        builder.setCancelable(false);
+        builder.create().show();
+    }
+
     private void getPlayerNames() {
 
         // Obtener el nombre del player 1
