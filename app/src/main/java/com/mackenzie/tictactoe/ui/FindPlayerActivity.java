@@ -40,6 +40,7 @@ public class FindPlayerActivity extends AppCompatActivity {
     private User userPlayer1;
     private String uid, jugadaId = "",playerOneName = "";
     private ListenerRegistration listenerRegistration = null;
+    private boolean vsMachine = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,6 +144,7 @@ public class FindPlayerActivity extends AppCompatActivity {
 
     private void crearNuevaJugada() {
         binding.textViewLoading.setText("Creando una jugada nueva...");
+        binding.animationView.playAnimation();
         Jugada nuevaJugada = new Jugada(uid);
 
         db.collection("jugadas")
@@ -152,7 +154,20 @@ public class FindPlayerActivity extends AppCompatActivity {
                     public void onSuccess(DocumentReference documentReference) {
                         jugadaId = documentReference.getId();
                         // Tenemos creada la jugada, debemos esperar a otro jugador
-                        esperarJugador();
+                        if (vsMachine) {
+                            final Handler handler = new Handler();
+                            final Runnable r = new Runnable() {
+                                @Override
+                                public void run() {
+                                    startVersusGame();
+                                }
+                            };
+
+                            handler.postDelayed(r, 1500);
+                            // Toast.makeText(FindPlayerActivity.this, "jugando contra Makina", Toast.LENGTH_SHORT).show();
+                        } else {
+                            esperarJugador();
+                        }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -165,7 +180,6 @@ public class FindPlayerActivity extends AppCompatActivity {
 
     private void esperarJugador() {
         binding.textViewLoading.setText("Esperando a otro jugador...");
-
         listenerRegistration = db.collection("jugadas")
                 .document(jugadaId)
                 .addSnapshotListener(new EventListener<DocumentSnapshot>() {
@@ -202,6 +216,16 @@ public class FindPlayerActivity extends AppCompatActivity {
         jugadaId = "";
     }
 
+    private void startVersusGame() {
+        if(listenerRegistration != null) {
+            listenerRegistration.remove();
+        }
+        Intent i = new Intent(FindPlayerActivity.this, VersusActivity.class);
+        i.putExtra(Constantes.EXTRA_JUGADA_ID, jugadaId);
+        startActivity(i);
+        jugadaId = "";
+    }
+
     private void firebaseInit() {
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
@@ -210,14 +234,18 @@ public class FindPlayerActivity extends AppCompatActivity {
         uid = mAuth.getUid();
         // TODO Arelglar esto
         // user.getDisplayName()
-        binding.tvPlayername.setText("Pruebas");
+        binding.tvPlayername.setText(user.getDisplayName());
     }
 
     private void events() {
         binding.buttonJugar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(FindPlayerActivity.this, "Coming Soon...", Toast.LENGTH_SHORT).show();
+                vsMachine = true;
+                changeVisibility(false);
+                crearNuevaJugada();
+
+                // Toast.makeText(FindPlayerActivity.this, "Coming Soon...", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -232,7 +260,7 @@ public class FindPlayerActivity extends AppCompatActivity {
         binding.buttonRanking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Toast.makeText(FindPlayerActivity.this, "Coming Soon...", Toast.LENGTH_SHORT).show();
             }
         });
     }
