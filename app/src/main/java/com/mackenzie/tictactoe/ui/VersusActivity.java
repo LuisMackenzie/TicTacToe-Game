@@ -272,6 +272,24 @@ public class VersusActivity extends AppCompatActivity {
                 Toast.makeText(this, "No es tu turno aún", Toast.LENGTH_SHORT).show();
             }*/
         }
+
+ // Actualizar en Firestore los datos de la jugada
+            db.collection("jugadas")
+                    .document(jugadaId)
+                    .set(jugada)
+                    .addOnSuccessListener(GameActivity2.this, new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            // Aqui faltan cosas
+
+                        }
+                    }).addOnFailureListener(GameActivity2.this, new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.w("ERROR", "Error al guardar la jugada");
+                }
+            });
+
     }
 
     private void actualizarJugada(String numeroCasilla) {
