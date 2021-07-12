@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -46,6 +47,7 @@ public class VersusActivity extends AppCompatActivity {
     private ListenerRegistration listenerJugada = null;
     private String uid, nombreJugador, jugadaId = "", playerOneName = "", playerTwoName = "", ganadorId = "";
     private Jugada jugada;
+    private User userPlayer1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +82,18 @@ public class VersusActivity extends AppCompatActivity {
         animCasillas.add(binding2.ivLottie06);
         animCasillas.add(binding2.ivLottie07);
         animCasillas.add(binding2.ivLottie08);
+
+        binding2.ivLottieAvatarp1.setRepeatCount(1);
+        binding2.ivLottieAvatarp2.setRepeatCount(1);
+        binding2.ivLottieAvatarp1.setAnimation("green_ckeck.json");
+        binding2.ivLottieAvatarp2.setAnimation("red_cross.json");
+        binding2.ivLottieAvatarp1.playAnimation();
+        binding2.ivLottieAvatarp2.playAnimation();
+        binding2.ivLottieAvatarp1.setVisibility(View.VISIBLE);
+        binding2.ivLottieAvatarp1.setVisibility(View.VISIBLE);
+
+        binding2.ivAvatarP1.setVisibility(View.INVISIBLE);
+        binding2.ivAvatarP2.setVisibility(View.INVISIBLE);
     }
 
     private void initGame() {
@@ -124,13 +138,24 @@ public class VersusActivity extends AppCompatActivity {
 
     private void getPlayerNames() {
         // Obtener el nombre del player 1
-        // Obtener el nombre del player 2
-        playerOneName = firebaseUser.getDisplayName();
-        playerTwoName = "Machine";
-        binding2.textViewPlayer1.setText("Mi turno: \n" + playerOneName);
-        binding2.textViewPlayer2.setText(playerTwoName);
-        binding2.ivAvatarP1.setVisibility(View.INVISIBLE);
-        binding2.ivAvatarP2.setVisibility(View.INVISIBLE);
+        // Setear el el nombre del player 2
+        db.collection("users")
+                .document(uid)
+                .get()
+                .addOnSuccessListener(VersusActivity.this, new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        userPlayer1 = documentSnapshot.toObject(User.class);
+                        playerOneName = documentSnapshot.get("name").toString();
+                        playerTwoName = "Machine";
+                        jugada.setJugador2(playerTwoName);
+                        binding2.textViewPlayer1.setText("Mi turno: \n" + playerOneName);
+                        binding2.textViewPlayer2.setText(playerTwoName);
+
+                        Log.e("TAG NAME PLAYER 1", "name 1 " + playerOneName);
+                    }
+                });
+
     }
 
     private void updatePlayersUI() {
