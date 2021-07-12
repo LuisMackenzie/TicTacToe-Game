@@ -72,7 +72,7 @@ public class GameActivity2 extends AppCompatActivity {
 
         initViews();
         initGame();
-        // updatePlayersUI();
+
 
     }
 
@@ -144,13 +144,34 @@ public class GameActivity2 extends AppCompatActivity {
     }
 
     private void updatePlayersUI() {
-        if(jugada.isTurnoP1()) {
-            binding2.textViewPlayer1.setTextColor(getResources().getColor(R.color.purple_500));
-            binding2.textViewPlayer2.setTextColor(getResources().getColor(R.color.teal_700));
+
+        if (jugada.getJugador1().equals(uid)) {
+            if(jugada.isTurnoP1()) {
+                binding2.textViewPlayer1.setTextColor(getResources().getColor(R.color.purple_500));
+                binding2.textViewPlayer2.setTextColor(getResources().getColor(R.color.teal_700));
+                binding2.textViewPlayer1.setText("Tu turno: \n" + playerOneName);
+                binding2.textViewPlayer2.setText(playerTwoName);
+            } else {
+                binding2.textViewPlayer1.setTextColor(getResources().getColor(R.color.teal_700));
+                binding2.textViewPlayer2.setTextColor(getResources().getColor(R.color.teal_200));
+                binding2.textViewPlayer1.setText(playerOneName);
+                binding2.textViewPlayer2.setText("Juega: \n" + playerTwoName);
+            }
         } else {
-            binding2.textViewPlayer1.setTextColor(getResources().getColor(R.color.teal_700));
-            binding2.textViewPlayer2.setTextColor(getResources().getColor(R.color.teal_200));
+            if(jugada.isTurnoP1()) {
+                binding2.textViewPlayer1.setTextColor(getResources().getColor(R.color.purple_500));
+                binding2.textViewPlayer2.setTextColor(getResources().getColor(R.color.teal_700));
+                binding2.textViewPlayer1.setText("Juega: \n" + playerOneName);
+                binding2.textViewPlayer2.setText(playerTwoName);
+            } else {
+                binding2.textViewPlayer1.setTextColor(getResources().getColor(R.color.teal_700));
+                binding2.textViewPlayer2.setTextColor(getResources().getColor(R.color.teal_200));
+                binding2.textViewPlayer1.setText(playerOneName);
+                binding2.textViewPlayer2.setText("Tu turno: \n" + playerTwoName);
+            }
         }
+
+
 
         if(!jugada.getGanadorId().isEmpty()) {
             ganadorId = jugada.getGanadorId();
@@ -173,14 +194,14 @@ public class GameActivity2 extends AppCompatActivity {
                 // binding2.ivLottie08Check.setVisibility(View.VISIBLE);
                 // lavCasillaActual.setVisibility(View.VISIBLE);
                 lavCasillaActual.playAnimation();
-                ivCasillaActual.setImageResource(R.drawable.ic_player_one);
+                // ivCasillaActual.setImageResource(R.drawable.ic_player_one);
             } else {
                 // binding2.ivLottie08Cross.setVisibility(View.VISIBLE);
                 lavCasillaActual.setRepeatCount(0);
                 lavCasillaActual.setAnimation("red_cross.json");
                 // lavCasillaActual.setVisibility(View.VISIBLE);
                 lavCasillaActual.playAnimation();
-                ivCasillaActual.setImageResource(R.drawable.ic_player_two);
+                // ivCasillaActual.setImageResource(R.drawable.ic_player_two);
             }
         }
     }
@@ -195,12 +216,21 @@ public class GameActivity2 extends AppCompatActivity {
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         userPlayer1 = documentSnapshot.toObject(User.class);
                         playerOneName = documentSnapshot.get("name").toString();
-                        binding2.textViewPlayer1.setText(playerOneName);
-                        binding2.ivAvatarP1.setImageResource(R.drawable.ic_player_one);
+                        if (jugada.getJugador1().equals(uid)) {
+                            binding2.textViewPlayer1.setText("Mi turno: \n" + playerOneName);
+                        } else {
+                            binding2.textViewPlayer1.setText("Juega: \n" + playerOneName);
+                        }
+                        // binding2.textViewPlayer1.setText(playerOneName);
+
+                        binding2.ivAvatarP1.setVisibility(View.INVISIBLE);
+                        setAvatarAnim(jugada);
+
+                        // binding2.ivAvatarP1.setImageResource(R.drawable.ic_player_one);
                         if(jugada.getJugador1().equals(uid)) {
                             nombreJugador = playerOneName;
                         }
-                        Log.e("TAG NAME PLAYER 1", "name 1 " + playerOneName);
+                        // Log.e("TAG NAME PLAYER 1", "name 1 " + playerOneName);
                     }
                 });
 
@@ -214,7 +244,9 @@ public class GameActivity2 extends AppCompatActivity {
                         userPlayer2 = documentSnapshot.toObject(User.class);
                         playerTwoName = documentSnapshot.get("name").toString();
                         binding2.textViewPlayer2.setText(playerTwoName);
-                        binding2.ivAvatarP2.setImageResource(R.drawable.ic_player_two);
+                        binding2.ivAvatarP2.setVisibility(View.INVISIBLE);
+                        setAvatarAnim(jugada);
+                        // binding2.ivAvatarP2.setImageResource(R.drawable.ic_player_two);
                         // Toast.makeText(GameActivity2.this, "Player 2 name" + playerTwoName, Toast.LENGTH_SHORT).show();
                         // Log.e("TAG NAME PLAYER 2", "name 2 " + playerTwoName);
                         if(jugada.getJugador2().equals(uid)) {
@@ -222,6 +254,20 @@ public class GameActivity2 extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    private void setAvatarAnim(Jugada jugada) {
+        if (jugada.getJugador1().equals(uid)) {
+            // binding2.ivLottieAvatarp1.setRepeatCount(0);
+            binding2.ivLottieAvatarp1.setAnimation("green_ckeck.json");
+            binding2.ivLottieAvatarp1.playAnimation();
+            binding2.ivAvatarP2.setVisibility(View.VISIBLE);
+        } else {
+            // binding2.ivLottieAvatarp2.setRepeatCount(0);
+            binding2.ivLottieAvatarp2.setAnimation("red_cross.json");
+            binding2.ivLottieAvatarp2.playAnimation();
+            binding2.ivAvatarP1.setVisibility(View.VISIBLE);
+        }
     }
 
     public void casillaSeleccionada(View view) {
@@ -251,14 +297,14 @@ public class GameActivity2 extends AppCompatActivity {
                 animCasillas.get(posicionCasilla).setAnimation("green_ckeck.json");
                 // animCasillas.get(posicionCasilla).setVisibility(View.VISIBLE);
                 animCasillas.get(posicionCasilla).playAnimation();
-                casillas.get(posicionCasilla).setImageResource(R.drawable.ic_player_one);
+                // casillas.get(posicionCasilla).setImageResource(R.drawable.ic_player_one);
                 jugada.getCeldas().set(posicionCasilla, 1);
             } else {
                 animCasillas.get(posicionCasilla).setRepeatCount(0);
                 animCasillas.get(posicionCasilla).setAnimation("red_cross.json");
                 // animCasillas.get(posicionCasilla).setVisibility(View.VISIBLE);
                 animCasillas.get(posicionCasilla).playAnimation();
-                casillas.get(posicionCasilla).setImageResource(R.drawable.ic_player_two);
+                // casillas.get(posicionCasilla).setImageResource(R.drawable.ic_player_two);
                 jugada.getCeldas().set(posicionCasilla, 2);
             }
 
