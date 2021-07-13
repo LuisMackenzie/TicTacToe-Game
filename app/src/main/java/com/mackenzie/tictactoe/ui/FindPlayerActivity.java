@@ -58,9 +58,17 @@ public class FindPlayerActivity extends AppCompatActivity {
     }
 
      private void showDialogDificult() {
+        Constantes.LEVEL = "easy";
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(R.string.dialog_level_title);
         builder.setMessage(R.string.dialog_level_message);
+         builder.setNeutralButton(R.string.dialog_level_neutral, new DialogInterface.OnClickListener() {
+             @Override
+             public void onClick(DialogInterface dialog, int which) {
+                 Constantes.LEVEL = "easy";
+                 crearNuevaJugada();
+             }
+         });
         builder.setPositiveButton(R.string.dialog_level_positive, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -75,7 +83,8 @@ public class FindPlayerActivity extends AppCompatActivity {
                 crearNuevaJugada();
             }
         });
-        builder.setCancelable(false);
+
+        builder.setCancelable(true);
         builder.create().show();
     }
 
@@ -266,11 +275,18 @@ public class FindPlayerActivity extends AppCompatActivity {
         binding.buttonJugar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                showDialogDificult();
+                Toast.makeText(FindPlayerActivity.this, "Coming Soon...", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        binding.buttonJugarVersus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 vsMachine = true;
                 changeVisibility(false);
-                // crearNuevaJugada();
-                showDialogDificult();
-                // Toast.makeText(FindPlayerActivity.this, "Coming Soon...", Toast.LENGTH_SHORT).show();
+                crearNuevaJugada();
+
             }
         });
 
@@ -285,7 +301,16 @@ public class FindPlayerActivity extends AppCompatActivity {
         binding.buttonRanking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(FindPlayerActivity.this, "Coming Soon...", Toast.LENGTH_SHORT).show();
+                db.collection("jugadas")
+                        .document()
+                        .delete()
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                Toast.makeText(FindPlayerActivity.this, "Database Cleaned", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                // Toast.makeText(FindPlayerActivity.this, "Coming Soon...", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -329,6 +354,15 @@ public class FindPlayerActivity extends AppCompatActivity {
                             jugadaId = "";
                         }
                     });
+            db.collection("jugadas")
+                    .document()
+                    .delete()
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            Toast.makeText(FindPlayerActivity.this, "Database Cleaned", Toast.LENGTH_SHORT).show();
+                        }
+                    });
         }
 
         super.onStop();
@@ -336,6 +370,8 @@ public class FindPlayerActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+
+        // onStop();
         // super.onBackPressed();
         finish();
     }

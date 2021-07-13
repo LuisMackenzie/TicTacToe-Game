@@ -67,6 +67,7 @@ public class VersusActivity extends AppCompatActivity {
         initViews();
         initGame();
         // getPlayerNames();
+        Toast.makeText(this, "Dificulty set: " + Constantes.LEVEL, Toast.LENGTH_SHORT).show();
 
     }
 
@@ -149,10 +150,9 @@ public class VersusActivity extends AppCompatActivity {
                         playerOneName = documentSnapshot.get("name").toString();
                         playerTwoName = "Machine";
                         jugada.setJugador2(playerTwoName);
-                        binding2.textViewPlayer1.setText("Mi turno: \n" + playerOneName);
+                        binding2.textViewPlayer1.setText(playerOneName);
                         binding2.textViewPlayer2.setText(playerTwoName);
 
-                        Log.e("TAG NAME PLAYER 1", "name 1 " + playerOneName);
                     }
                 });
 
@@ -262,15 +262,6 @@ public class VersusActivity extends AppCompatActivity {
                 actualizarJugada(view.getTag().toString());
             }
 
-            /*if(jugada.isTurnoP1() && jugada.getJugador1().equals(uid)) {
-                // Está jugando el jugador 1
-                actualizarJugada(view.getTag().toString());
-            } else if(!jugada.isTurnoP1() && jugada.getJugador2().equals(uid)) {
-                // Está jugando el jugador 2
-                actualizarJugada(view.getTag().toString());
-            } else {
-                Toast.makeText(this, "No es tu turno aún", Toast.LENGTH_SHORT).show();
-            }*/
         }
 
             // Actualizar en Firestore los datos de la jugada

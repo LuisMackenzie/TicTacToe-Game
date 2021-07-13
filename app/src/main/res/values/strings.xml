@@ -13,5 +13,6 @@
     <string name="dialog_level_title">Escoge una Dificultad</string>
     <string name="dialog_level_message">Seleccione la dificultad de la CPU</string>
     <string name="dialog_level_positive">Normal</string>
-    <string name="dialog_level_negative">Impossible</string>
+    <string name="dialog_level_negative">Imposible</string>
+    <string name="dialog_level_neutral">Easy</string>
 </resources>

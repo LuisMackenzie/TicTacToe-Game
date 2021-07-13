@@ -75,8 +75,8 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
+                android:layout_width="250dp"
+                android:layout_height="150dp"
                 android:layout_gravity="center"
                 app:srcCompat="@drawable/ic_tic_tac_toe" />
 
@@ -89,7 +89,18 @@
                 android:drawableLeft="@drawable/ic_console"
                 android:drawableRight="@drawable/ic_artificial_intelligence"
                 android:padding="16dp"
-                android:text="Jugar" />
+                android:text="1 Jugador" />
+
+            <Button
+                android:id="@+id/buttonJugarVersus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@color/purple_500"
+                android:drawableLeft="@drawable/ic_console"
+                android:drawableRight="@drawable/ic_console"
+                android:padding="16dp"
+                android:text="2 Jugadores" />
 
             <Button
                 android:id="@+id/buttonJugarOnline"

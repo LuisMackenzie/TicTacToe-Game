@@ -230,7 +230,8 @@ public class GameActivity2 extends AppCompatActivity {
                         if(jugada.getJugador1().equals(uid)) {
                             nombreJugador = playerOneName;
                         }
-                        // Log.e("TAG NAME PLAYER 1", "name 1 " + playerOneName);
+                        Log.e("TAG NAME PLAYER 1", "name 1 " + playerOneName);
+                        Log.e("TAG NAME PLAYER 2", "name 2 " + playerTwoName);
                     }
                 });
 
