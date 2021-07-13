@@ -273,17 +273,17 @@ public class VersusActivity extends AppCompatActivity {
             }*/
         }
 
- // Actualizar en Firestore los datos de la jugada
+            // Actualizar en Firestore los datos de la jugada
             db.collection("jugadas")
                     .document(jugadaId)
                     .set(jugada)
-                    .addOnSuccessListener(GameActivity2.this, new OnSuccessListener<Void>() {
+                    .addOnSuccessListener(VersusActivity.this, new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
                             // Aqui faltan cosas
 
                         }
-                    }).addOnFailureListener(GameActivity2.this, new OnFailureListener() {
+                    }).addOnFailureListener(VersusActivity.this, new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     Log.w("ERROR", "Error al guardar la jugada");

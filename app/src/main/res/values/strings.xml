@@ -9,4 +9,9 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string name="dialog_level_title">Escoge una Dificultad</string>
+    <string name="dialog_level_message">Seleccione la dificultad de la CPU</string>
+    <string name="dialog_level_positive">Normal</string>
+    <string name="dialog_level_negative">Impossible</string>
 </resources>

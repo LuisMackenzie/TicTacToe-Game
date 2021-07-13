@@ -1,8 +1,10 @@
 package com.mackenzie.tictactoe.ui;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -23,6 +25,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.ListenerRegistration;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.mackenzie.tictactoe.R;
 import com.mackenzie.tictactoe.app.Constantes;
 import com.mackenzie.tictactoe.databinding.ActivityFindPlayerBinding;
 import com.mackenzie.tictactoe.model.Jugada;
@@ -56,20 +59,20 @@ public class FindPlayerActivity extends AppCompatActivity {
 
      private void showDialogDificult() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Escoge una Dificultad");
-        builder.setMessage("Seleccione la dificultad de la CPU");
-        builder.setPositiveButton("Normal", new DialogInterface.OnClickListener() {
+        builder.setTitle(R.string.dialog_level_title);
+        builder.setMessage(R.string.dialog_level_message);
+        builder.setPositiveButton(R.string.dialog_level_positive, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Constantes.LEVEL= "normal";
-                // issAction();
+                crearNuevaJugada();
             }
         });
-        builder.setNegativeButton("Dificil", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.dialog_level_negative, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // Constantes.LEVEL = "hard";
-                // issAction();
+                Constantes.LEVEL = "hard";
+                crearNuevaJugada();
             }
         });
         builder.setCancelable(false);
@@ -265,8 +268,8 @@ public class FindPlayerActivity extends AppCompatActivity {
             public void onClick(View v) {
                 vsMachine = true;
                 changeVisibility(false);
-                crearNuevaJugada();
-
+                // crearNuevaJugada();
+                showDialogDificult();
                 // Toast.makeText(FindPlayerActivity.this, "Coming Soon...", Toast.LENGTH_SHORT).show();
             }
         });
