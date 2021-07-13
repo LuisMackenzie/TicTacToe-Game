@@ -65,6 +65,7 @@ public class FindPlayerActivity extends AppCompatActivity {
              @Override
              public void onClick(DialogInterface dialog, int which) {
                  Constantes.LEVEL = "easy";
+                 changeVisibility(false);
                  crearNuevaJugada();
                  // Toast.makeText(FindPlayerActivity.this, "" + Constantes.LEVEL, Toast.LENGTH_SHORT).show();
              }
@@ -73,6 +74,7 @@ public class FindPlayerActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Constantes.LEVEL = "normal";
+                changeVisibility(false);
                 crearNuevaJugada();
                 // Toast.makeText(FindPlayerActivity.this, "" + Constantes.LEVEL, Toast.LENGTH_SHORT).show();
             }
@@ -81,6 +83,7 @@ public class FindPlayerActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Constantes.LEVEL= "hard";
+                changeVisibility(false);
                 crearNuevaJugada();
                 // Toast.makeText(FindPlayerActivity.this, "" + Constantes.LEVEL, Toast.LENGTH_SHORT).show();
             }
