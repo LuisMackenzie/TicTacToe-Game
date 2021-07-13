@@ -56,18 +56,8 @@ public class VersusActivity extends AppCompatActivity {
         binding2 = ContentGameBinding.inflate(getLayoutInflater());
         setContentView(binding2.getRoot());
 
-        binding.fab2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
         initViews();
         initGame();
-        // getPlayerNames();
-        Toast.makeText(this, "Dificulty set: " + Constantes.LEVEL, Toast.LENGTH_SHORT).show();
 
     }
 
@@ -95,6 +85,14 @@ public class VersusActivity extends AppCompatActivity {
 
         binding2.ivAvatarP1.setVisibility(View.INVISIBLE);
         binding2.ivAvatarP2.setVisibility(View.INVISIBLE);
+
+        binding.fab2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
     }
 
     private void initGame() {
@@ -148,7 +146,7 @@ public class VersusActivity extends AppCompatActivity {
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         userPlayer1 = documentSnapshot.toObject(User.class);
                         playerOneName = documentSnapshot.get("name").toString();
-                        playerTwoName = "Machine";
+                        playerTwoName = "Player 2";
                         jugada.setJugador2(playerTwoName);
                         binding2.textViewPlayer1.setText(playerOneName);
                         binding2.textViewPlayer2.setText(playerTwoName);
@@ -255,9 +253,9 @@ public class VersusActivity extends AppCompatActivity {
             if(jugada.isTurnoP1()) {
                 // Está jugando el jugador 1
                 actualizarJugada(view.getTag().toString());
-                Toast.makeText(this, "Turno Jugador", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Turno Jugador 2", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(this, "Turno Maquina", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Turno Jugador 1", Toast.LENGTH_SHORT).show();
                 // Está jugando el jugador 2
                 actualizarJugada(view.getTag().toString());
             }
