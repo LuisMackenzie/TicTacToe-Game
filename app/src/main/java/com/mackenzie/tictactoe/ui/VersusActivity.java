@@ -163,7 +163,7 @@ public class VersusActivity extends AppCompatActivity {
         if(jugada.isTurnoP1()) {
             binding2.textViewPlayer1.setTextColor(getResources().getColor(R.color.purple_500));
             binding2.textViewPlayer2.setTextColor(getResources().getColor(R.color.teal_700));
-            binding2.textViewPlayer1.setText("Tu turno: \n" + playerOneName);
+            binding2.textViewPlayer1.setText(playerOneName);
             binding2.textViewPlayer2.setText(playerTwoName);
         } else {
             binding2.textViewPlayer1.setTextColor(getResources().getColor(R.color.teal_700));

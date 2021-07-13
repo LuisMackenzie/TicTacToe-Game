@@ -43,7 +43,7 @@ public class FindPlayerActivity extends AppCompatActivity {
     private User userPlayer1;
     private String uid, jugadaId = "",playerOneName = "";
     private ListenerRegistration listenerRegistration = null;
-    private boolean vsMachine = false;
+    private boolean vsMachine = false, vsPlayer = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,34 +57,35 @@ public class FindPlayerActivity extends AppCompatActivity {
 
     }
 
-     private void showDialogDificult() {
-        Constantes.LEVEL = "easy";
+    private void showDialogDificult() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(R.string.dialog_level_title);
         builder.setMessage(R.string.dialog_level_message);
-         builder.setNeutralButton(R.string.dialog_level_neutral, new DialogInterface.OnClickListener() {
+        builder.setNeutralButton(R.string.dialog_level_neutral, new DialogInterface.OnClickListener() {
              @Override
              public void onClick(DialogInterface dialog, int which) {
                  Constantes.LEVEL = "easy";
                  crearNuevaJugada();
+                 // Toast.makeText(FindPlayerActivity.this, "" + Constantes.LEVEL, Toast.LENGTH_SHORT).show();
              }
-         });
-        builder.setPositiveButton(R.string.dialog_level_positive, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Constantes.LEVEL= "normal";
-                crearNuevaJugada();
-            }
         });
         builder.setNegativeButton(R.string.dialog_level_negative, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Constantes.LEVEL = "hard";
+                Constantes.LEVEL = "normal";
                 crearNuevaJugada();
+                // Toast.makeText(FindPlayerActivity.this, "" + Constantes.LEVEL, Toast.LENGTH_SHORT).show();
             }
         });
-
-        builder.setCancelable(true);
+        builder.setPositiveButton(R.string.dialog_level_positive, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Constantes.LEVEL= "hard";
+                crearNuevaJugada();
+                // Toast.makeText(FindPlayerActivity.this, "" + Constantes.LEVEL, Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.setCancelable(false);
         builder.create().show();
     }
 
@@ -193,12 +194,24 @@ public class FindPlayerActivity extends AppCompatActivity {
                             final Runnable r = new Runnable() {
                                 @Override
                                 public void run() {
+                                    startOnePlayerGame();
+                                }
+                            };
+
+                            handler.postDelayed(r, 1500);
+                            vsMachine = false;
+                            // Toast.makeText(FindPlayerActivity.this, "jugando contra Makina", Toast.LENGTH_SHORT).show();
+                        } else if (vsPlayer){
+                            final Handler handler = new Handler();
+                            final Runnable r = new Runnable() {
+                                @Override
+                                public void run() {
                                     startVersusGame();
                                 }
                             };
 
                             handler.postDelayed(r, 1500);
-                            // Toast.makeText(FindPlayerActivity.this, "jugando contra Makina", Toast.LENGTH_SHORT).show();
+                            vsPlayer = false;
                         } else {
                             esperarJugador();
                         }
@@ -260,14 +273,22 @@ public class FindPlayerActivity extends AppCompatActivity {
         jugadaId = "";
     }
 
+    private void startOnePlayerGame() {
+        if(listenerRegistration != null) {
+            listenerRegistration.remove();
+        }
+        Intent i = new Intent(FindPlayerActivity.this, OnePlayerActivity.class);
+        i.putExtra(Constantes.EXTRA_JUGADA_ID, jugadaId);
+        startActivity(i);
+        jugadaId = "";
+    }
+
     private void firebaseInit() {
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
         user = mAuth.getCurrentUser();
         uid = mAuth.getUid();
-        // TODO Arelglar esto
-        // user.getDisplayName()
         binding.tvPlayername.setText(user.getDisplayName());
     }
 
@@ -275,6 +296,7 @@ public class FindPlayerActivity extends AppCompatActivity {
         binding.buttonJugar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                vsMachine = true;
                 showDialogDificult();
                 Toast.makeText(FindPlayerActivity.this, "Coming Soon...", Toast.LENGTH_SHORT).show();
             }
@@ -283,7 +305,7 @@ public class FindPlayerActivity extends AppCompatActivity {
         binding.buttonJugarVersus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                vsMachine = true;
+                vsPlayer = true;
                 changeVisibility(false);
                 crearNuevaJugada();
 
@@ -301,15 +323,20 @@ public class FindPlayerActivity extends AppCompatActivity {
         binding.buttonRanking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                db.collection("jugadas")
-                        .document()
-                        .delete()
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                Toast.makeText(FindPlayerActivity.this, "Database Cleaned", Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                if(jugadaId != "") {
+                    db.collection("jugadas")
+                            .document(jugadaId)
+                            .delete()
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    jugadaId = "";
+                                    Toast.makeText(FindPlayerActivity.this, "Game Table Cleaned", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                } else {
+                    Toast.makeText(FindPlayerActivity.this, "Nothing to clean", Toast.LENGTH_SHORT).show();
+                }
                 // Toast.makeText(FindPlayerActivity.this, "Coming Soon...", Toast.LENGTH_SHORT).show();
             }
         });
@@ -352,15 +379,7 @@ public class FindPlayerActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             jugadaId = "";
-                        }
-                    });
-            db.collection("jugadas")
-                    .document()
-                    .delete()
-                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            Toast.makeText(FindPlayerActivity.this, "Database Cleaned", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(FindPlayerActivity.this, "Game Table Cleaned", Toast.LENGTH_SHORT).show();
                         }
                     });
         }
