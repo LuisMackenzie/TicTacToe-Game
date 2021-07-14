@@ -88,7 +88,7 @@ public class FindPlayerActivity extends AppCompatActivity {
                 // Toast.makeText(FindPlayerActivity.this, "" + Constantes.LEVEL, Toast.LENGTH_SHORT).show();
             }
         });
-        builder.setCancelable(false);
+        builder.setCancelable(true);
         builder.create().show();
     }
 
@@ -326,21 +326,7 @@ public class FindPlayerActivity extends AppCompatActivity {
         binding.buttonRanking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(jugadaId != "") {
-                    db.collection("jugadas")
-                            .document(jugadaId)
-                            .delete()
-                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    jugadaId = "";
-                                    Toast.makeText(FindPlayerActivity.this, "Game Table Cleaned", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                } else {
-                    Toast.makeText(FindPlayerActivity.this, "Nothing to clean", Toast.LENGTH_SHORT).show();
-                }
-                // Toast.makeText(FindPlayerActivity.this, "Coming Soon...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(FindPlayerActivity.this, "Coming Soon...", Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".ui.FindPlayerActivity">
 
     <ScrollView
@@ -85,7 +86,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:backgroundTint="@color/purple_500"
+                android:background="@drawable/btn_shapes"
+                android:drawableTint="@color/white"
                 android:drawableLeft="@drawable/ic_console"
                 android:drawableRight="@drawable/ic_artificial_intelligence"
                 android:padding="16dp"
@@ -96,7 +98,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:backgroundTint="@color/purple_500"
+                android:background="@drawable/btn_shapes"
+                android:drawableTint="@color/white"
                 android:drawableLeft="@drawable/ic_console"
                 android:drawableRight="@drawable/ic_console"
                 android:padding="16dp"
@@ -107,7 +110,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:backgroundTint="@color/purple_500"
+                android:background="@drawable/btn_shapes"
+                android:drawableTint="@color/white"
                 android:drawableLeft="@drawable/ic_console"
                 android:drawableRight="@drawable/ic_console"
                 android:padding="16dp"
@@ -118,10 +122,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
+                android:textColor="@color/black"
                 android:backgroundTint="@color/teal_200"
+                android:drawableTint="@color/black"
                 android:drawableLeft="@drawable/ic_rank"
+                android:drawableRight="@drawable/ic_rank"
                 android:padding="16dp"
                 android:text="Ver Ranking" />
+
+            <!--android:background="@drawable/bordes_redondos"
+            android:background="@drawable/btn_shapes_ranking"
+            android:backgroundTint="@android:color/transparent"
+            -->
 
             <TextView
                 android:id="@+id/tv_playername"
