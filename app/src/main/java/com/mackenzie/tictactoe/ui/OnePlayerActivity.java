@@ -399,6 +399,10 @@ public class OnePlayerActivity extends AppCompatActivity {
                 // aqui creamos un numero aleatorio del 0 al 8
                 randomNum = RandomNumber();
 
+                while (!isPosiblePlay(randomNum)) {
+                    randomNum = RandomNumber();
+                }
+
                 // aqui comprobamos si el numero esta libre o esta escogidop
                 boolean validPlay = isPosiblePlay(randomNum);
 
@@ -406,13 +410,13 @@ public class OnePlayerActivity extends AppCompatActivity {
                     // aqui le pasamos la opcion escogida al metodo que se encarga de dibujar
                     actualizarJugadaMaquina(randomNum);
                 } else {
-
+                    Toast.makeText(this, "Esto no deberia de salir NUNCa", Toast.LENGTH_SHORT).show();
                 }
 
 
 
                 // actualizarJugada(casillaTemp);
-                Toast.makeText(this, "casilla: " + casilla, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "casilla: " + randomNum, Toast.LENGTH_SHORT).show();
                 break;
             case "normal":
 
