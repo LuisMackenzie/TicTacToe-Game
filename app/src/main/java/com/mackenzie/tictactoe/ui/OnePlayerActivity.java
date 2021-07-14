@@ -388,16 +388,29 @@ public class OnePlayerActivity extends AppCompatActivity {
     private void iaJugada() {
         // TODO Aqui se ejecuta la logica de la makina
         Toast.makeText(this, "Ejecutando logica de makina", Toast.LENGTH_SHORT).show();
+
         // Cambiamos el turno
         jugada.setTurnoP1(!jugada.isTurnoP1());
+
         // TODO se ha marcar una casilla
         switch (Constantes.LEVEL) {
             case "easy":
-                int casilla;
-                Random casillaRandom = new Random();
-                casilla = casillaRandom.nextInt(9);
-                // String casillaTemp = String.valueOf(casilla);
-                actualizarJugadaMaquina(casilla);
+                int randomNum;
+                // aqui creamos un numero aleatorio del 0 al 8
+                randomNum = RandomNumber();
+
+                // aqui comprobamos si el numero esta libre o esta escogidop
+                boolean validPlay = isPosiblePlay(randomNum);
+
+                if (validPlay) {
+                    // aqui le pasamos la opcion escogida al metodo que se encarga de dibujar
+                    actualizarJugadaMaquina(randomNum);
+                } else {
+
+                }
+
+
+
                 // actualizarJugada(casillaTemp);
                 Toast.makeText(this, "casilla: " + casilla, Toast.LENGTH_SHORT).show();
                 break;
@@ -426,6 +439,23 @@ public class OnePlayerActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private boolean isPosiblePlay(int casilla) {
+        // List<Integer> todasCasillas = jugada.getCeldas();
+
+        if (jugada.getCeldas().get(casilla).equals(0)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private int RandomNumber() {
+        int casilla;
+        Random casillaRandom = new Random();
+        casilla = casillaRandom.nextInt(9);
+        return casilla;
     }
 
     private boolean existeSolucion() {
