@@ -1,4 +1,4 @@
-# Tres en Raya Online
+# Tic-Tac-Toe Online
 
 The classic game of always with animations, ranking of the best players and three game modes. The classic single player mode.
 A mode for two players locally from the same device and another online.
