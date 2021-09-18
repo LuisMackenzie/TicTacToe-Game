@@ -18,7 +18,7 @@ A mode for two players locally from the same device and another online.
 1. Get the source code.
 
 ```
-git clone --recursive https://github.com/LuisMackenzie/DuckHuntGame.git
+git clone --recursive https://github.com/LuisMackenzie/TicTacToe-Game.git
 ```
 
 ### Notice
