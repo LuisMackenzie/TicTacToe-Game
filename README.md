@@ -1,93 +1,45 @@
-# Título del Proyecto
+# Tres en Raya Online
 
-_Acá va un párrafo que describa lo que es el proyecto_
+The classic game of always with animations, ranking of the best players and three game modes. The classic single player mode.
+A mode for two players locally from the same device and another online.
 
-## Comenzando 🚀
+## Getting Started 🚀
 
-_Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
+### Setup development environment 📋
 
-Mira **Deployment** para conocer como desplegar el proyecto.
+* [Android Studio](https://developer.android.com/studio)
 
+* [Android SDK Tools](https://developer.android.com/studio#Other)
 
-### Pre-requisitos 📋
+* [Firebase Account](https://firebase.google.com/?hl=es)
 
-_Que cosas necesitas para instalar el software y como instalarlas_
+### Build & Run the application 🔧
 
-```
-Da un ejemplo
-```
-
-### Instalación 🔧
-
-_Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener un entorno de desarrollo ejecutandose_
-
-_Dí cómo será ese paso_
+1. Get the source code.
 
 ```
-Da un ejemplo
+git clone --recursive https://github.com/LuisMackenzie/DuckHuntGame.git
 ```
 
-_Y repite_
+### Notice
 
-```
-hasta finalizar
-```
+To use the *Firebase Firestore DB* you need to configure a Firestore DB in a *Firebase Project*:
+* Create a Cloud Firestore database
+* Add Firebase to your Android project. Follow the directions here: https://firebase.google.com/docs/android/setup
+* Set up your development environment adding the required dependencies
 
-_Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
 
-## Ejecutando las pruebas ⚙️
+## Built with 🛠️
 
-_Explica como ejecutar las pruebas automatizadas para este sistema_
+* [Android Studio](https://developer.android.com/studio) - The Android framework recomended by Google
+* [Gradle](https://gradle.org/) - Dependency manager
+* [Firebase Firestore](https://firebase.google.com/?hl=es) - Flexible, scalable, cloud-based firebase NoSQL database
 
-### Analice las pruebas end-to-end 🔩
+## Autors ✒️
 
-_Explica que verifican estas pruebas y por qué_
+* **Luis Baez** - *Initial work* - [My Github](https://github.com/LuisMackenzie)
 
-```
-Da un ejemplo
-```
-
-### Y las pruebas de estilo de codificación ⌨️
-
-_Explica que verifican estas pruebas y por qué_
-
-```
-Da un ejemplo
-```
-
-## Despliegue 📦
-
-_Agrega notas adicionales sobre como hacer deploy_
-
-## Construido con 🛠️
-
-_Menciona las herramientas que utilizaste para crear tu proyecto_
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
-* [Maven](https://maven.apache.org/) - Manejador de dependencias
-* [ROME](https://rometools.github.io/rome/) - Usado para generar RSS
-
-## Contribuyendo 🖇️
-
-Por favor lee el [CONTRIBUTING.md](https://gist.github.com/villanuevand/xxxxxx) para detalles de nuestro código de conducta, y el proceso para enviarnos pull requests.
-
-## Wiki 📖
-
-Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Wiki](https://github.com/tu/proyecto/wiki)
-
-## Versionado 📌
-
-Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones disponibles, mira los [tags en este repositorio](https://github.com/tu/proyecto/tags).
-
-## Autores ✒️
-
-_Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
-
-* **Andrés Villanueva** - *Trabajo Inicial* - [villanuevand](https://github.com/villanuevand)
-* **Fulanito Detal** - *Documentación* - [fulanitodetal](#fulanito-de-tal)
-
-También puedes mirar la lista de todos los [contribuyentes](https://github.com/your/project/contributors) quíenes han participado en este proyecto. 
-
+<!--
 ## Licencia 📄
 
 Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
@@ -97,9 +49,9 @@ Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md
 * Comenta a otros sobre este proyecto 📢
 * Invita una cerveza 🍺 o un café ☕ a alguien del equipo. 
 * Da las gracias públicamente 🤓.
-* etc.
+* etc.  -->
 
 
 
 ---
-⌨️ con ❤️ por [Villanuevand](https://github.com/Villanuevand) 😊
+⌨️ with ❤️ by [Luis Baez](https://github.com/LuisMackenzie) 😊
