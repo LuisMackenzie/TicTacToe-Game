@@ -24,6 +24,7 @@ A mode for two players locally from the same device and another online.
 ```
 git clone --recursive https://github.com/LuisMackenzie/TicTacToe-Game.git
 ```
+2. Or get apk [here](https://github.com/LuisMackenzie/TicTacToe-Game/raw/master/TicTacToe.apk)
 
 ### Notice
 
