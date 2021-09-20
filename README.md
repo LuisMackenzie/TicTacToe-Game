@@ -3,6 +3,11 @@
 The classic game of always with animations, ranking of the best players and three game modes. The classic single player mode.
 A mode for two players locally from the same device and another online.
 
+| <img src="docs_resources/home.png"> | <img src="docs_resources/level.png"> | <img src="docs_resources/creating.png"> |
+| ---------------------------------------------- | -------------------------------------------- | ------------------------------------------- |
+| <img src="docs_resources/1player_02.png"> | <img src="docs_resources/waiting.png"> | <img src="docs_resources/win.png"> |
+| ---------------------------------------------- | -------------------------------------------- | ------------------------------------------- |
+
 ## Getting Started 🚀
 
 ### Setup development environment 📋
