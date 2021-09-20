@@ -6,7 +6,6 @@ A mode for two players locally from the same device and another online.
 | <img src="docs_resources/home.png"> | <img src="docs_resources/level.png"> | <img src="docs_resources/creating.png"> |
 | ---------------------------------------------- | -------------------------------------------- | ------------------------------------------- |
 | <img src="docs_resources/1player02.png"> | <img src="docs_resources/waiting.png"> | <img src="docs_resources/win.png"> |
-| ---------------------------------------------- | -------------------------------------------- | ------------------------------------------- |
 
 ## Getting Started 🚀
 
@@ -61,4 +60,4 @@ Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md
 
 
 ---
-⌨️ with ❤️ by [Luis Baez](https://github.com/LuisMackenzie) 😊
+⌨️ with ❤️ by [Luis](https://github.com/LuisMackenzie) 😊
