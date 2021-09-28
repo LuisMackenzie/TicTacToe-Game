@@ -40,7 +40,7 @@ To use the *Firebase Firestore DB* you need to configure a Firestore DB in a *Fi
 * [Gradle](https://gradle.org/) - Gradle, is a tool and dependency manager that allows open source compilation automation, which is focused on flexibility and performance
 * [Firebase Firestore](https://firebase.google.com/?hl=es) - Flexible, scalable, cloud-based firebase NoSQL database
 * [Firebase Authentication](https://firebase.google.com/?hl=es) - Firebase Authentication provides backend services and UI libraries ready to authenticate users.
-* [AirBNB](https://airbnb.io/lottie/) - Lottie is a library for Android that parses Adobe AE animations exported as json with Bodymovin and renders them natively
+* [Lottie Animations](https://airbnb.io/lottie/) - Lottie is a library for Android that parses Adobe AE animations exported as json with Bodymovin and renders them natively
 
 ## Autors ✒️
 
